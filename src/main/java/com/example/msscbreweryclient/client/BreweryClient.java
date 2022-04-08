@@ -15,6 +15,9 @@ public class BreweryClient {
     private final RestTemplate restTemplate;
 
     private String apihost;
+    public void setApihost(String apihost) {
+        this.apihost = apihost;
+    }
 
     public BreweryClient(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
@@ -23,7 +26,5 @@ public class BreweryClient {
     public BeerDto getBeerById(UUID beerId) {
         return restTemplate.getForObject(apihost+BEER_PATH_V1+beerId.toString(),BeerDto.class);
     }
-    public void setApihost(String apihost) {
-        this.apihost = apihost;
-    }
+
 }
