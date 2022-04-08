@@ -21,4 +21,12 @@ class BreweryClientTest {
 
         assertNotNull(beerDto);
     }
+
+    @Test
+    void saveBeer() {
+        BeerDto beerDto =BeerDto.builder().id(UUID.randomUUID()).beerName("Corona").build();
+
+        var uri=client.saveBeer(beerDto);
+        assertNotNull(uri);
+    }
 }
