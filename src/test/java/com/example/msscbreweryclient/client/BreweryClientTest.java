@@ -17,7 +17,7 @@ class BreweryClientTest {
 
     @Test
     void getBeerById() {
-        BeerDto beerDto =client.getBeerById(UUID.randomUUID());
+        BeerDto beerDto = client.getBeerById(UUID.randomUUID());
 
         assertNotNull(beerDto);
     }
@@ -28,5 +28,11 @@ class BreweryClientTest {
 
         var uri=client.saveBeer(beerDto);
         assertNotNull(uri);
+    }
+
+    @Test
+    void updateBeer() {
+        BeerDto beerDto =BeerDto.builder().id(UUID.randomUUID()).beerName("Corona").build();
+        client.updateBeer(beerDto.getId(),beerDto);
     }
 }
