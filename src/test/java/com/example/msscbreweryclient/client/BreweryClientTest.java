@@ -24,7 +24,7 @@ class BreweryClientTest {
 
     @Test
     void saveBeer() {
-        BeerDto beerDto =BeerDto.builder().id(UUID.randomUUID()).beerName("Corona").build();
+        BeerDto beerDto =BeerDto.builder().beerName("Corona").build();
 
         var uri=client.saveBeer(beerDto);
         assertNotNull(uri);
@@ -32,7 +32,13 @@ class BreweryClientTest {
 
     @Test
     void updateBeer() {
-        BeerDto beerDto =BeerDto.builder().id(UUID.randomUUID()).beerName("Corona").build();
-        client.updateBeer(beerDto.getId(),beerDto);
+        BeerDto beerDto =BeerDto.builder().beerName("Corona").build();
+        client.updateBeer(UUID.randomUUID(),beerDto);
+    }
+
+    @Test
+    void deleteBeer() {
+        BeerDto beerDto =BeerDto.builder().id(UUID.randomUUID()).build();
+        client.deleteBeer(beerDto.getId());
     }
 }
